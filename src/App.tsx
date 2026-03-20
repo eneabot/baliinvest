@@ -5,6 +5,9 @@ import MapView from './components/MapView';
 import LeftPanel from './components/LeftPanel';
 import LoadingScreen from './components/LoadingScreen';
 import WorldForecast from './components/WorldForecast';
+import RegionPage from './components/RegionPage';
+import NewsPage from './components/NewsPage';
+import Tutorial from './components/Tutorial';
 
 export interface Weights {
   zonage: number;
@@ -29,7 +32,11 @@ export default function App() {
   const [minScore, setMinScore] = useState<number>(0);
   const [focusedZone, setFocusedZone] = useState<Zone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [currentPage, setCurrentPage] = useState<'map' | 'world'>('map');
+  const [currentPage, setCurrentPage] = useState<'map' | 'world' | 'region' | 'news'>('map');
+  const [detailZone, setDetailZone] = useState<(Zone & { globalScore: number }) | null>(null);
+  const [tutorialSeen, setTutorialSeen] = useState<boolean>(
+    () => localStorage.getItem('bb_tutorial_seen') === 'true'
+  );
 
   const weightsArray = [
     weights.zonage,
@@ -101,14 +108,35 @@ export default function App() {
     setFocusedZone(zone);
   }, []);
 
+  const handleViewDetail = useCallback((zone: Zone & { globalScore: number }) => {
+    setDetailZone(zone);
+    setCurrentPage('region');
+  }, []);
+
+  const handleTutorialDismiss = useCallback(() => {
+    localStorage.setItem('bb_tutorial_seen', 'true');
+    setTutorialSeen(true);
+  }, []);
+
   if (currentPage === 'world') {
     return <WorldForecast onBack={() => setCurrentPage('map')} />;
+  }
+
+  if (currentPage === 'news') {
+    return <NewsPage onBack={() => setCurrentPage('map')} />;
+  }
+
+  if (currentPage === 'region' && detailZone) {
+    return <RegionPage zone={detailZone} onBack={() => setCurrentPage('map')} />;
   }
 
   return (
     <>
       {isLoading && <LoadingScreen onDone={() => setIsLoading(false)} />}
-      <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden', background: '#0f1117' }}>
+      {!isLoading && !tutorialSeen && currentPage === 'map' && (
+        <Tutorial onDismiss={handleTutorialDismiss} />
+      )}
+      <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden', background: '#faf8f4' }}>
         <LeftPanel
           weights={weights}
           onWeightChange={handleWeightChange}
@@ -122,6 +150,7 @@ export default function App() {
           onZoneFocus={handleZoneFocus}
           onRemoveCompare={(id) => setSelectedZones((prev) => prev.filter((x) => x !== id))}
           onNavigateWorld={() => setCurrentPage('world')}
+          onNavigateNews={() => setCurrentPage('news')}
           totalZones={zones.length}
         />
         <div style={{ flex: 1, position: 'relative' }}>
@@ -132,6 +161,7 @@ export default function App() {
             onZoneCompare={handleZoneCompare}
             focusedZone={focusedZone}
             onFocusClear={() => setFocusedZone(null)}
+            onViewDetail={handleViewDetail}
           />
         </div>
       </div>

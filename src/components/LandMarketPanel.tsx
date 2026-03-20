@@ -9,7 +9,7 @@ export default function LandMarketPanel({ zoneId }: Props) {
 
   if (!data || data.transactions.length === 0) {
     return (
-      <div style={{ fontSize: '12px', color: '#475569', padding: '8px 0' }}>
+      <div style={{ fontSize: '12px', color: '#9c8877', padding: '8px 0' }}>
         No transaction data available for this zone
       </div>
     );
@@ -31,9 +31,9 @@ export default function LandMarketPanel({ zoneId }: Props) {
                   style={{
                     textAlign: 'left',
                     padding: '4px 6px',
-                    color: '#475569',
+                    color: '#9c8877',
                     fontWeight: 600,
-                    borderBottom: '1px solid #1e293b',
+                    borderBottom: '1px solid #e8e0d5',
                     whiteSpace: 'nowrap',
                   }}
                 >
@@ -45,16 +45,16 @@ export default function LandMarketPanel({ zoneId }: Props) {
           <tbody>
             {transactions.map((t) => (
               <tr key={t.year}>
-                <td style={{ padding: '4px 6px', color: '#94a3b8', fontFamily: 'monospace' }}>
+                <td style={{ padding: '4px 6px', color: '#6b5c4e', fontFamily: 'monospace' }}>
                   {t.year}
                 </td>
-                <td style={{ padding: '4px 6px', color: '#e2e8f0', fontWeight: 600 }}>
+                <td style={{ padding: '4px 6px', color: '#1a1410', fontWeight: 600 }}>
                   {t.count}
                 </td>
-                <td style={{ padding: '4px 6px', color: '#f59e0b', fontWeight: 700 }}>
+                <td style={{ padding: '4px 6px', color: '#c0392b', fontWeight: 700 }}>
                   ${t.avgPricePerSqm}
                 </td>
-                <td style={{ padding: '4px 6px', color: '#64748b', whiteSpace: 'nowrap' }}>
+                <td style={{ padding: '4px 6px', color: '#9c8877', whiteSpace: 'nowrap' }}>
                   ${t.minPrice}–${t.maxPrice}
                 </td>
               </tr>
@@ -65,7 +65,7 @@ export default function LandMarketPanel({ zoneId }: Props) {
 
       {/* Inline CSS bar chart — avg price trend */}
       <div>
-        <div style={{ fontSize: '10px', color: '#475569', marginBottom: '6px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+        <div style={{ fontSize: '10px', color: '#9c8877', marginBottom: '6px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
           Avg Price Trend ($/m²)
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', height: '48px' }}>
@@ -88,7 +88,7 @@ export default function LandMarketPanel({ zoneId }: Props) {
                   style={{
                     width: '100%',
                     height: `${heightPct}%`,
-                    background: 'linear-gradient(180deg, #f59e0b, #d97706)',
+                    background: 'linear-gradient(180deg, #c0392b, #8B2500)',
                     borderRadius: '2px 2px 0 0',
                     minHeight: '4px',
                     transition: 'height 0.3s ease',
@@ -103,7 +103,7 @@ export default function LandMarketPanel({ zoneId }: Props) {
           {transactions.map((t) => (
             <div
               key={t.year}
-              style={{ flex: 1, textAlign: 'center', fontSize: '9px', color: '#334155' }}
+              style={{ flex: 1, textAlign: 'center', fontSize: '9px', color: '#9c8877' }}
             >
               {t.year}
             </div>

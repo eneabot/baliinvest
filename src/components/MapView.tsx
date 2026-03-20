@@ -3,8 +3,6 @@ import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { getScoreColor } from '../data/zones';
 import type { Zone } from '../data/zones';
-import ZonePopup from './ZonePopup';
-import ReactDOM from 'react-dom/client';
 
 interface Props {
   zones: (Zone & { globalScore: number })[];
@@ -16,11 +14,10 @@ interface Props {
   onViewDetail?: (zone: Zone & { globalScore: number }) => void;
 }
 
-function MapCircles({ zones, weights, selectedZones, onZoneCompare, focusedZone, onFocusClear, onViewDetail }: Props) {
+function MapCircles({ zones, selectedZones, focusedZone, onFocusClear, onViewDetail }: Props) {
   const map = useMap();
   const circlesRef = useRef<Map<string, L.Circle>>(new Map());
   const labelsRef = useRef<Map<string, L.Marker>>(new Map());
-  const popupRef = useRef<L.Popup | null>(null);
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -65,12 +62,12 @@ function MapCircles({ zones, weights, selectedZones, onZoneCompare, focusedZone,
         radius: 3500,
         fillColor: color,
         fillOpacity: 0.65,
-        color: isSelected ? '#f59e0b' : 'white',
+        color: isSelected ? '#c0392b' : 'white',
         weight: isSelected ? 3 : 1.5,
       });
 
       circle.bindTooltip(`
-        <div style="background:#1a1f2e;color:#e2e8f0;border:1px solid #2d3748;padding:6px 10px;border-radius:6px;font-size:13px;">
+        <div style="background:#ffffff;color:#1a1410;border:1px solid #e8e0d5;padding:6px 10px;border-radius:6px;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
           <strong style="color:${color}">${zone.name}</strong><br/>
           Score: <strong style="color:${color}">${score}/100</strong>
           ${zone.trendBonus > 8 ? ' 🔥' : ''}
@@ -84,44 +81,12 @@ function MapCircles({ zones, weights, selectedZones, onZoneCompare, focusedZone,
 
       circle.on('click', (e) => {
         L.DomEvent.stopPropagation(e);
-
-        // Update focus state
         setSelectedZoneId(zone.id);
 
-        if (popupRef.current) {
-          popupRef.current.remove();
+        // Navigate directly to detail page — no popup
+        if (onViewDetail) {
+          onViewDetail(zone);
         }
-
-        const container = document.createElement('div');
-        const root = ReactDOM.createRoot(container);
-        root.render(
-          <ZonePopup
-            zone={zone}
-            weights={weights}
-            isSelected={selectedZones.includes(zone.id)}
-            onCompare={() => {
-              onZoneCompare(zone.id);
-              if (popupRef.current) popupRef.current.remove();
-            }}
-            onViewDetail={onViewDetail ? () => {
-              if (popupRef.current) popupRef.current.remove();
-              onViewDetail(zone);
-            } : undefined}
-          />
-        );
-
-        const popup = L.popup({
-          maxWidth: 400,
-          minWidth: 340,
-          className: 'zone-popup',
-          closeButton: true,
-          autoClose: true,
-        })
-          .setLatLng([zone.lat, zone.lng])
-          .setContent(container);
-
-        popup.addTo(map);
-        popupRef.current = popup;
       });
 
       circle.addTo(map);
@@ -162,7 +127,7 @@ function MapCircles({ zones, weights, selectedZones, onZoneCompare, focusedZone,
       labelsRef.current.forEach((m) => m.remove());
       labelsRef.current.clear();
     };
-  }, [zones, selectedZones, weights]);
+  }, [zones, selectedZones]);
 
   return null;
 }

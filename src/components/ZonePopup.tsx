@@ -13,66 +13,76 @@ interface Props {
 
 export const LISTINGS_LINKS: Record<string, { label: string; url: string }[]> = {
   canggu: [
-    { label: 'Balitecture — Canggu land', url: 'https://www.balitecture.com/property-type/land/?location=canggu' },
-    { label: 'Kibarer — Canggu', url: 'https://www.kibarer.com/en/property/?location=canggu&type=land' },
+    { label: 'Canggu Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/canggu?type=land' },
+    { label: 'Canggu Land — Lamudi', url: 'https://www.lamudi.co.id/bali/canggu/land/buy/' },
   ],
   seminyak: [
-    { label: 'Balitecture — Seminyak land', url: 'https://www.balitecture.com/property-type/land/?location=seminyak' },
+    { label: 'Seminyak Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/seminyak?type=land' },
+    { label: 'Seminyak — Lamudi', url: 'https://www.lamudi.co.id/bali/seminyak/land/buy/' },
   ],
   uluwatu: [
-    { label: 'Balitecture — Uluwatu land', url: 'https://www.balitecture.com/property-type/land/?location=uluwatu' },
-    { label: 'Investland — Uluwatu', url: 'https://investinbali.com/land-for-sale-in-uluwatu/' },
+    { label: 'Uluwatu Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/uluwatu?type=land' },
+    { label: 'Pecatu/Uluwatu — Lamudi', url: 'https://www.lamudi.co.id/bali/pecatu/land/buy/' },
   ],
   ubud: [
-    { label: 'Balitecture — Ubud land', url: 'https://www.balitecture.com/property-type/land/?location=ubud' },
+    { label: 'Ubud Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/ubud?type=land' },
+    { label: 'Ubud — Lamudi', url: 'https://www.lamudi.co.id/bali/ubud/land/buy/' },
   ],
   pererenan: [
-    { label: 'Balitecture — Pererenan', url: 'https://www.balitecture.com/property-type/land/?location=pererenan' },
+    { label: 'Pererenan/Canggu — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/canggu?type=land' },
+    { label: 'Pererenan — Lamudi', url: 'https://www.lamudi.co.id/bali/canggu/land/buy/' },
   ],
   nusadua: [
-    { label: 'Balitecture — Nusa Dua land', url: 'https://www.balitecture.com/property-type/land/?location=nusa-dua' },
-    { label: 'Kibarer — Nusa Dua', url: 'https://www.kibarer.com/en/property/?location=nusadua&type=land' },
+    { label: 'Nusa Dua Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/nusa-dua?type=land' },
+    { label: 'Nusa Dua — Lamudi', url: 'https://www.lamudi.co.id/bali/nusa-dua/land/buy/' },
   ],
   sanur: [
-    { label: 'Balitecture — Sanur land', url: 'https://www.balitecture.com/property-type/land/?location=sanur' },
+    { label: 'Sanur Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/sanur?type=land' },
+    { label: 'Sanur — Lamudi', url: 'https://www.lamudi.co.id/bali/sanur/land/buy/' },
   ],
   tabanan: [
-    { label: 'Rumah123 — Tabanan land', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=tabanan' },
+    { label: 'Tabanan Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/tabanan?type=land' },
+    { label: 'Tabanan — Lamudi', url: 'https://www.lamudi.co.id/bali/tabanan/land/buy/' },
   ],
   amed: [
-    { label: 'Lamudi — Karangasem (Amed area)', url: 'https://www.lamudi.co.id/karangasem/land/buy/' },
+    { label: 'Karangasem/Amed — Lamudi', url: 'https://www.lamudi.co.id/bali/karangasem/land/buy/' },
+    { label: 'East Bali — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali?type=land&location=karangasem' },
   ],
   buleleng: [
-    { label: 'Rumah123 — Singaraja land', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=singaraja' },
-    { label: 'Lamudi — Buleleng', url: 'https://www.lamudi.co.id/buleleng/land/buy/' },
+    { label: 'Singaraja/Buleleng — Lamudi', url: 'https://www.lamudi.co.id/bali/buleleng/land/buy/' },
+    { label: 'North Bali — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali?type=land&location=singaraja' },
   ],
   jimbaran: [
-    { label: 'Balitecture — Jimbaran land', url: 'https://www.balitecture.com/property-type/land/?location=jimbaran' },
-    { label: 'Kibarer — Jimbaran', url: 'https://www.kibarer.com/en/property/?location=jimbaran&type=land' },
+    { label: 'Jimbaran Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali/jimbaran?type=land' },
+    { label: 'Jimbaran — Lamudi', url: 'https://www.lamudi.co.id/bali/jimbaran/land/buy/' },
   ],
   keramas: [
-    { label: 'Rumah123 — Keramas', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=keramas' },
-    { label: 'Rumah123 — Gianyar land', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=gianyar' },
+    { label: 'Gianyar/Keramas — Lamudi', url: 'https://www.lamudi.co.id/bali/gianyar/land/buy/' },
+    { label: 'Keramas — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali?type=land&location=gianyar' },
   ],
   lombok: [
-    { label: 'Lombok property — Lamudi', url: 'https://www.lamudi.co.id/lombok/land/buy/' },
-    { label: 'Invest Lombok', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=lombok' },
+    { label: 'Senggigi/Lombok — Lamudi', url: 'https://www.lamudi.co.id/lombok-barat/land/buy/' },
+    { label: 'Lombok Land — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/lombok?type=land' },
   ],
   'lombok-kuta': [
-    { label: 'Lombok Kuta — Lamudi', url: 'https://www.lamudi.co.id/lombok/land/buy/' },
-    { label: 'Mandalika listings', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=mandalika' },
+    { label: 'Mandalika/Kuta Lombok — Lamudi', url: 'https://www.lamudi.co.id/lombok-tengah/land/buy/' },
+    { label: 'Kuta Lombok — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/lombok/kuta?type=land' },
   ],
   'lombok-gili': [
-    { label: 'Gili Islands listings', url: 'https://www.lamudi.co.id/lombok/land/buy/' },
+    { label: 'Gili Islands — Lamudi', url: 'https://www.lamudi.co.id/lombok-utara/land/buy/' },
+    { label: 'Gili — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/lombok?type=land&location=gili' },
   ],
   'lombok-north': [
-    { label: 'North Lombok land', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=lombok+utara' },
+    { label: 'North Lombok — Lamudi', url: 'https://www.lamudi.co.id/lombok-utara/land/buy/' },
+    { label: 'North Lombok — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/lombok?type=land' },
   ],
   'nusa-lembongan': [
-    { label: 'Nusa Lembongan land', url: 'https://www.balitecture.com/property-type/land/?location=nusa-lembongan' },
+    { label: 'Nusa Lembongan — Lamudi', url: 'https://www.lamudi.co.id/bali/klungkung/land/buy/' },
+    { label: 'Nusa Islands — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali?type=land&location=klungkung' },
   ],
   'nusa-penida': [
-    { label: 'Nusa Penida listings', url: 'https://www.rumah123.com/properti/dijual/tanah/?keyword=nusa+penida' },
+    { label: 'Nusa Penida — Lamudi', url: 'https://www.lamudi.co.id/bali/klungkung/land/buy/' },
+    { label: 'Nusa Penida — Dot Property', url: 'https://www.dotproperty.id/en/properties-for-sale/bali?type=land&location=nusa-penida' },
   ],
 };
 
@@ -80,8 +90,8 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
   const color = getScoreColor(value);
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '5px' }}>
-      <span style={{ width: '110px', fontSize: '12px', color: '#94a3b8', flexShrink: 0 }}>{label}</span>
-      <div style={{ flex: 1, height: '6px', background: '#2d3748', borderRadius: '3px', overflow: 'hidden' }}>
+      <span style={{ width: '110px', fontSize: '12px', color: '#6b5c4e', flexShrink: 0 }}>{label}</span>
+      <div style={{ flex: 1, height: '6px', background: '#e8e0d5', borderRadius: '3px', overflow: 'hidden' }}>
         <div style={{
           width: `${value}%`,
           height: '100%',
@@ -115,18 +125,20 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
       maxWidth: 'min(380px, 90vw)',
       maxHeight: '80vh',
       overflowY: 'auto',
+      background: '#ffffff',
+      color: '#1a1410',
     }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
         <div>
-          <h2 style={{ margin: 0, fontSize: '17px', color: '#e2e8f0', fontWeight: 700 }}>
+          <h2 style={{ margin: 0, fontSize: '17px', color: '#1a1410', fontWeight: 700 }}>
             {zone.name}
           </h2>
-          <span style={{ fontSize: '11px', color: '#64748b', letterSpacing: '0.5px' }}>{zone.raw.zoneType}</span>
+          <span style={{ fontSize: '11px', color: '#9c8877', letterSpacing: '0.5px' }}>{zone.raw.zoneType}</span>
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: '22px', fontWeight: 900, color: scoreColor, lineHeight: 1 }}>
-            {zone.globalScore}<span style={{ fontSize: '12px', color: '#64748b', fontWeight: 400 }}>/100</span>
+            {zone.globalScore}<span style={{ fontSize: '12px', color: '#9c8877', fontWeight: 400 }}>/100</span>
           </div>
           {isTrending && (
             <div style={{
@@ -150,13 +162,13 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
 
       {/* Trend signal */}
       <div style={{
-        background: '#0f1117',
+        background: '#faf8f4',
         borderLeft: `3px solid ${scoreColor}`,
         padding: '6px 10px',
         borderRadius: '0 4px 4px 0',
         marginBottom: '14px',
         fontSize: '12px',
-        color: '#cbd5e1',
+        color: '#6b5c4e',
         lineHeight: 1.4,
       }}>
         {zone.trendSignal}
@@ -164,7 +176,7 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
 
       {/* Scores */}
       <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
           Score Breakdown
         </div>
         <ScoreBar label="Zoning" value={zone.scores.zonage} />
@@ -174,38 +186,38 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
         <ScoreBar label="Attractiveness" value={zone.scores.attractivite} />
       </div>
 
-      <div style={{ borderTop: '1px solid #1e293b', marginBottom: '14px' }} />
+      <div style={{ borderTop: '1px solid #e8e0d5', marginBottom: '14px' }} />
 
       {/* Market data */}
       <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
           Market Data
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', fontSize: '12px' }}>
-          <span style={{ color: '#64748b' }}>Avg nightly rate</span>
-          <span style={{ color: '#e2e8f0', fontWeight: 600 }}>${zone.raw.avgNightlyRate}</span>
-          <span style={{ color: '#64748b' }}>Occupancy rate</span>
-          <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{Math.round(zone.raw.occupancyRate * 100)}%</span>
-          <span style={{ color: '#64748b' }}>Annual RevPAR</span>
+          <span style={{ color: '#9c8877' }}>Avg nightly rate</span>
+          <span style={{ color: '#1a1410', fontWeight: 600 }}>${zone.raw.avgNightlyRate}</span>
+          <span style={{ color: '#9c8877' }}>Occupancy rate</span>
+          <span style={{ color: '#1a1410', fontWeight: 600 }}>{Math.round(zone.raw.occupancyRate * 100)}%</span>
+          <span style={{ color: '#9c8877' }}>Annual RevPAR</span>
           <span style={{ color: scoreColor, fontWeight: 600 }}>~${revpar.toLocaleString()}</span>
-          <span style={{ color: '#64748b' }}>Land price</span>
-          <span style={{ color: '#e2e8f0', fontWeight: 600 }}>${zone.raw.landPricePerAre.toLocaleString()}/are</span>
-          <span style={{ color: '#64748b' }}>Land appreciation</span>
+          <span style={{ color: '#9c8877' }}>Land price</span>
+          <span style={{ color: '#1a1410', fontWeight: 600 }}>${zone.raw.landPricePerAre.toLocaleString()}/are</span>
+          <span style={{ color: '#9c8877' }}>Land appreciation</span>
           <span style={{ color: '#22c55e', fontWeight: 600 }}>+{zone.raw.landPriceTrend}%/yr</span>
-          <span style={{ color: '#64748b' }}>Airport access</span>
-          <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{zone.raw.distanceAirport} min</span>
+          <span style={{ color: '#9c8877' }}>Airport access</span>
+          <span style={{ color: '#1a1410', fontWeight: 600 }}>{zone.raw.distanceAirport} min</span>
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid #1e293b', marginBottom: '14px' }} />
+      <div style={{ borderTop: '1px solid #e8e0d5', marginBottom: '14px' }} />
 
       {/* ROI Estimator */}
       <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
           ROI Estimator
         </div>
         <div style={{ display: 'flex', gap: '8px', marginBottom: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <label style={{ fontSize: '12px', color: '#94a3b8' }}>Land (ares):</label>
+          <label style={{ fontSize: '12px', color: '#6b5c4e' }}>Land (ares):</label>
           <input
             type="number"
             value={ares}
@@ -213,15 +225,15 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
             onChange={(e) => setAres(Math.max(1, parseInt(e.target.value) || 1))}
             style={{
               width: '50px',
-              background: '#0f1117',
-              border: '1px solid #2d3748',
+              background: '#faf8f4',
+              border: '1px solid #e8e0d5',
               borderRadius: '4px',
-              color: '#e2e8f0',
+              color: '#1a1410',
               padding: '3px 6px',
               fontSize: '12px',
             }}
           />
-          <label style={{ fontSize: '12px', color: '#94a3b8' }}>Build cost ($):</label>
+          <label style={{ fontSize: '12px', color: '#6b5c4e' }}>Build cost ($):</label>
           <input
             type="number"
             value={construction}
@@ -230,52 +242,52 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
             onChange={(e) => setConstruction(Math.max(0, parseInt(e.target.value) || 0))}
             style={{
               width: '90px',
-              background: '#0f1117',
-              border: '1px solid #2d3748',
+              background: '#faf8f4',
+              border: '1px solid #e8e0d5',
               borderRadius: '4px',
-              color: '#e2e8f0',
+              color: '#1a1410',
               padding: '3px 6px',
               fontSize: '12px',
             }}
           />
         </div>
         <div style={{
-          background: '#0f1117',
+          background: '#faf8f4',
           borderRadius: '6px',
           padding: '10px 12px',
           fontSize: '12px',
-          border: '1px solid #1e293b',
+          border: '1px solid #e8e0d5',
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ color: '#64748b' }}>Total investment</span>
-            <span style={{ color: '#e2e8f0', fontWeight: 700 }}>${totalInvest.toLocaleString()}</span>
+            <span style={{ color: '#9c8877' }}>Total investment</span>
+            <span style={{ color: '#1a1410', fontWeight: 700 }}>${totalInvest.toLocaleString()}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ color: '#64748b' }}>Gross revenue/yr</span>
+            <span style={{ color: '#9c8877' }}>Gross revenue/yr</span>
             <span style={{ color: scoreColor, fontWeight: 700 }}>~${revpar.toLocaleString()}</span>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #1e293b', paddingTop: '6px', marginTop: '2px' }}>
-            <span style={{ color: '#f59e0b', fontWeight: 700 }}>Gross ROI: ~{roi}%</span>
-            <span style={{ color: '#94a3b8' }}>Payback: ~{payback} yrs</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #e8e0d5', paddingTop: '6px', marginTop: '2px' }}>
+            <span style={{ color: '#c0392b', fontWeight: 700 }}>Gross ROI: ~{roi}%</span>
+            <span style={{ color: '#6b5c4e' }}>Payback: ~{payback} yrs</span>
           </div>
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid #1e293b', marginBottom: '14px' }} />
+      <div style={{ borderTop: '1px solid #e8e0d5', marginBottom: '14px' }} />
 
       {/* Land Market Panel */}
       <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
           Land Market (2020–2024)
         </div>
         <LandMarketPanel zoneId={zone.id} />
       </div>
 
-      <div style={{ borderTop: '1px solid #1e293b', marginBottom: '14px' }} />
+      <div style={{ borderTop: '1px solid #e8e0d5', marginBottom: '14px' }} />
 
       {/* Land Listings */}
       <div style={{ marginBottom: '14px' }}>
-        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+        <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
           Land Listings{zone.listingsCount > 0 ? ` (${zone.listingsCount} active)` : ''}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -289,18 +301,18 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                color: '#60a5fa',
+                color: '#c0392b',
                 fontSize: '12px',
                 textDecoration: 'none',
                 padding: '4px 8px',
-                background: '#0f1117',
+                background: '#faf8f4',
                 borderRadius: '4px',
-                border: '1px solid #1e293b',
+                border: '1px solid #e8e0d5',
                 transition: 'border-color 0.15s',
               }}
             >
               <span>{link.label}</span>
-              <span style={{ color: '#475569', fontSize: '11px' }}>↗</span>
+              <span style={{ color: '#9c8877', fontSize: '11px' }}>↗</span>
             </a>
           ))}
           <a
@@ -311,17 +323,17 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              color: '#94a3b8',
+              color: '#6b5c4e',
               fontSize: '12px',
               textDecoration: 'none',
               padding: '4px 8px',
-              background: '#0f1117',
+              background: '#faf8f4',
               borderRadius: '4px',
-              border: '1px solid #1e293b',
+              border: '1px solid #e8e0d5',
             }}
           >
             <span>Search on Rumah123</span>
-            <span style={{ color: '#475569', fontSize: '11px' }}>↗</span>
+            <span style={{ color: '#9c8877', fontSize: '11px' }}>↗</span>
           </a>
         </div>
       </div>
@@ -332,10 +344,10 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
         style={{
           width: '100%',
           padding: '8px 16px',
-          background: isSelected ? '#f59e0b22' : '#1e293b',
-          border: `1px solid ${isSelected ? '#f59e0b' : '#2d3748'}`,
+          background: isSelected ? '#c0392b22' : '#faf8f4',
+          border: `1px solid ${isSelected ? '#c0392b' : '#e8e0d5'}`,
           borderRadius: '6px',
-          color: isSelected ? '#f59e0b' : '#94a3b8',
+          color: isSelected ? '#c0392b' : '#6b5c4e',
           fontSize: '13px',
           fontWeight: 600,
           cursor: 'pointer',
@@ -354,9 +366,9 @@ export default function ZonePopup({ zone, isSelected, onCompare, onViewDetail }:
             width: '100%',
             padding: '8px 16px',
             background: 'transparent',
-            border: '1px solid #d97706',
+            border: '1px solid #c0392b',
             borderRadius: '6px',
-            color: '#d97706',
+            color: '#c0392b',
             fontSize: '13px',
             fontWeight: 600,
             cursor: 'pointer',

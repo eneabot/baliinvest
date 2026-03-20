@@ -19,6 +19,7 @@ interface Props {
   onZoneFocus: (zone: Zone) => void;
   onRemoveCompare: (id: string) => void;
   onNavigateWorld: () => void;
+  onNavigateNews: () => void;
   totalZones: number;
 }
 
@@ -63,19 +64,19 @@ function SliderRow({
 }) {
   const config = SLIDER_CONFIGS[sliderKey];
   const pct = Math.round(value * 100);
-  const color = '#d97706';
+  const color = '#c0392b';
   return (
     <div style={{ marginBottom: '12px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px' }}>
         <span
           title={config.formula}
-          style={{ fontSize: '13px', color: '#94a3b8', fontWeight: 600, cursor: 'help', borderBottom: '1px dashed #475569' }}
+          style={{ fontSize: '13px', color: '#6b5c4e', fontWeight: 600, cursor: 'help', borderBottom: '1px dashed #e8e0d5' }}
         >
-          {config.label} <span style={{ fontSize: '10px', color: '#475569', fontWeight: 400 }}>ⓘ</span>
+          {config.label} <span style={{ fontSize: '10px', color: '#9c8877', fontWeight: 400 }}>ⓘ</span>
         </span>
         <span style={{ fontSize: '12px', fontWeight: 700, color }}>{pct}%</span>
       </div>
-      <div style={{ fontSize: '10px', color: '#475569', marginBottom: '5px', lineHeight: 1.4 }}>
+      <div style={{ fontSize: '10px', color: '#9c8877', marginBottom: '5px', lineHeight: 1.4 }}>
         {config.explanation}
       </div>
       <input
@@ -151,16 +152,16 @@ function ForecastPanel({ zones }: { zones: ScoredZone[] }) {
 
   return (
     <div style={{
-      background: '#1a1f2e',
-      border: '1px solid #2d3748',
+      background: '#f0ebe3',
+      border: '1px solid #e8e0d5',
       borderRadius: '8px',
       padding: '12px',
       marginBottom: '10px',
     }}>
-      <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+      <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
         3-Year Forecast
       </div>
-      <div style={{ borderBottom: '1px solid #1e293b', marginBottom: '8px' }} />
+      <div style={{ borderBottom: '1px solid #e8e0d5', marginBottom: '8px' }} />
       {top3.map((z, i) => (
         <div key={z.id} style={{
           display: 'flex',
@@ -168,20 +169,20 @@ function ForecastPanel({ zones }: { zones: ScoredZone[] }) {
           gap: '6px',
           marginBottom: '6px',
           padding: '6px 8px',
-          background: '#0f1117',
+          background: '#ffffff',
           borderRadius: '5px',
-          border: '1px solid #1e293b',
+          border: '1px solid #e8e0d5',
         }}>
-          <span style={{ fontSize: '10px', color: '#475569', fontWeight: 700, flexShrink: 0, fontFamily: 'monospace' }}>{rankLabels[i]}</span>
+          <span style={{ fontSize: '10px', color: '#9c8877', fontWeight: 700, flexShrink: 0, fontFamily: 'monospace' }}>{rankLabels[i]}</span>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: '11px', color: '#e2e8f0', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: '11px', color: '#1a1410', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {z.name}
             </div>
             <div style={{ fontSize: '10px', color: '#22c55e' }}>{shortSignal(z)}</div>
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <div style={{ fontSize: '11px', color: '#22c55e', fontWeight: 700 }}>+{z.upside} pts</div>
-            <div style={{ fontSize: '10px', color: '#475569' }}>{z.globalScore}→{z.f2029}</div>
+            <div style={{ fontSize: '10px', color: '#9c8877' }}>{z.globalScore}→{z.f2029}</div>
           </div>
         </div>
       ))}
@@ -219,12 +220,12 @@ function ComparisonTable({
   return (
     <div style={{
       marginTop: '10px',
-      background: '#1a1f2e',
-      border: '1px solid #2d3748',
+      background: '#f0ebe3',
+      border: '1px solid #e8e0d5',
       borderRadius: '8px',
       padding: '10px',
     }}>
-      <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '8px', fontWeight: 600 }}>
+      <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '8px', fontWeight: 600 }}>
         Zone Comparison
       </div>
 
@@ -232,10 +233,10 @@ function ComparisonTable({
         <div />
         {selected.map((z) => (
           <div key={z.id} style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '10px', color: '#e2e8f0', fontWeight: 600, lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{z.name}</div>
+            <div style={{ fontSize: '10px', color: '#1a1410', fontWeight: 600, lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{z.name}</div>
             <button
               onClick={() => onRemove(z.id)}
-              style={{ background: 'none', border: 'none', color: '#475569', cursor: 'pointer', fontSize: '10px', padding: 0 }}
+              style={{ background: 'none', border: 'none', color: '#9c8877', cursor: 'pointer', fontSize: '10px', padding: 0 }}
             >
               ✕
             </button>
@@ -243,13 +244,13 @@ function ComparisonTable({
         ))}
       </div>
 
-      <div style={{ borderBottom: '1px solid #1e293b', marginBottom: '4px' }} />
+      <div style={{ borderBottom: '1px solid #e8e0d5', marginBottom: '4px' }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: `70px ${selected.map(() => '1fr').join(' ')}`, gap: '4px', marginBottom: '4px' }}>
-        <span style={{ fontSize: '10px', color: '#64748b', alignSelf: 'center' }}>Global</span>
+        <span style={{ fontSize: '10px', color: '#6b5c4e', alignSelf: 'center' }}>Global</span>
         {selected.map((z) => (
           <div key={z.id} style={{ textAlign: 'center' }}>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: z.globalScore === bestGlobal ? '#22c55e' : '#94a3b8' }}>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: z.globalScore === bestGlobal ? '#22c55e' : '#6b5c4e' }}>
               {z.globalScore}
             </span>
           </div>
@@ -263,13 +264,13 @@ function ComparisonTable({
           gap: '4px',
           marginBottom: '3px',
         }}>
-          <span style={{ fontSize: '10px', color: '#64748b', alignSelf: 'center' }}>{label}</span>
+          <span style={{ fontSize: '10px', color: '#6b5c4e', alignSelf: 'center' }}>{label}</span>
           {selected.map((z) => (
             <div key={z.id} style={{ textAlign: 'center' }}>
               <span style={{
                 fontSize: '11px',
                 fontWeight: z.scores[key] === best[key] ? 700 : 400,
-                color: z.scores[key] === best[key] ? '#22c55e' : '#94a3b8',
+                color: z.scores[key] === best[key] ? '#22c55e' : '#6b5c4e',
               }}>
                 {z.scores[key]}
               </span>
@@ -308,6 +309,7 @@ export default function LeftPanel({
   onZoneFocus,
   onRemoveCompare,
   onNavigateWorld,
+  onNavigateNews,
   totalZones,
 }: Props) {
   const top5 = [...allScoredZones]
@@ -322,8 +324,8 @@ export default function LeftPanel({
       minWidth: '240px',
       maxWidth: '340px',
       height: '100vh',
-      background: '#0f1117',
-      borderRight: '1px solid #1e293b',
+      background: '#faf8f4',
+      borderRight: '1px solid #e8e0d5',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
@@ -331,38 +333,78 @@ export default function LeftPanel({
       {/* Header */}
       <div style={{
         padding: '12px 14px 10px',
-        borderBottom: '1px solid #1e293b',
-        background: '#0d1219',
+        borderBottom: '1px solid #e8e0d5',
+        background: '#f0ebe3',
         flexShrink: 0,
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '15px', fontWeight: 800, color: '#d97706', letterSpacing: '-0.3px' }}>
-              🏝️ Balibagus
+            <h1 style={{ margin: 0, fontSize: '15px', fontWeight: 800, color: '#c0392b', letterSpacing: '-0.3px' }}>
+              🏝️ Bali Bagus
             </h1>
-            <p style={{ margin: '2px 0 0', fontSize: '10px', color: '#475569', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
+            <p style={{ margin: '2px 0 0', fontSize: '10px', color: '#9c8877', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
               Bali Investment Intelligence
             </p>
-            <p style={{ margin: '4px 0 0', fontSize: '10px', color: '#334155' }}>
-              {totalZones} zones · {today}
+            <p style={{ margin: '4px 0 0', fontSize: '10px', color: '#6b5c4e' }}>
+              {totalZones} zones
             </p>
+            {/* Last updated + Refresh */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px' }}>
+              <span style={{ fontSize: '10px', color: '#9c8877' }}>
+                Last updated: {today}
+              </span>
+              <button
+                onClick={() => window.location.reload()}
+                style={{
+                  background: 'none',
+                  border: '1px solid #e8e0d5',
+                  borderRadius: '4px',
+                  color: '#9c8877',
+                  fontSize: '10px',
+                  padding: '1px 5px',
+                  cursor: 'pointer',
+                  lineHeight: 1.5,
+                }}
+                title="Refresh data"
+              >
+                🔄 Refresh
+              </button>
+            </div>
           </div>
-          <button
-            onClick={onNavigateWorld}
-            style={{
-              background: 'none',
-              border: '1px solid #1e293b',
-              borderRadius: '5px',
-              color: '#64748b',
-              fontSize: '10px',
-              padding: '4px 7px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              letterSpacing: '0.3px',
-            }}
-          >
-            🌍 World
-          </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-end' }}>
+            <button
+              onClick={onNavigateWorld}
+              style={{
+                background: 'none',
+                border: '1px solid #e8e0d5',
+                borderRadius: '5px',
+                color: '#6b5c4e',
+                fontSize: '10px',
+                padding: '4px 7px',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                letterSpacing: '0.3px',
+              }}
+            >
+              🌍 World
+            </button>
+            <button
+              onClick={onNavigateNews}
+              style={{
+                background: 'none',
+                border: '1px solid #e8e0d5',
+                borderRadius: '5px',
+                color: '#6b5c4e',
+                fontSize: '10px',
+                padding: '4px 7px',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                letterSpacing: '0.3px',
+              }}
+            >
+              📰 News
+            </button>
+          </div>
         </div>
       </div>
 
@@ -371,13 +413,13 @@ export default function LeftPanel({
 
         {/* Weights sliders */}
         <div style={{
-          background: '#0d1219',
-          border: '1px solid #1e293b',
+          background: '#ffffff',
+          border: '1px solid #e8e0d5',
           borderRadius: '8px',
           padding: '12px',
           marginBottom: '10px',
         }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '10px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '10px', fontWeight: 600 }}>
             Scoring Weights
           </div>
           {(Object.keys(SLIDER_CONFIGS) as (keyof typeof SLIDER_CONFIGS)[]).map((key) => (
@@ -388,24 +430,24 @@ export default function LeftPanel({
               onChange={(v) => onWeightChange(key as keyof Weights, v)}
             />
           ))}
-          <div style={{ textAlign: 'right', fontSize: '10px', color: '#334155', marginTop: '2px', fontFamily: 'monospace' }}>
+          <div style={{ textAlign: 'right', fontSize: '10px', color: '#9c8877', marginTop: '2px', fontFamily: 'monospace' }}>
             Σ = {Math.round((weights.zonage + weights.rendement + weights.foncier + weights.accessibilite + weights.attractivite) * 100)}%
           </div>
         </div>
 
         {/* Filters */}
         <div style={{
-          background: '#0d1219',
-          border: '1px solid #1e293b',
+          background: '#ffffff',
+          border: '1px solid #e8e0d5',
           borderRadius: '8px',
           padding: '12px',
           marginBottom: '10px',
         }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '10px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '10px', fontWeight: 600 }}>
             Filters
           </div>
           <div style={{ marginBottom: '10px' }}>
-            <label style={{ fontSize: '11px', color: '#64748b', display: 'block', marginBottom: '4px' }}>
+            <label style={{ fontSize: '11px', color: '#6b5c4e', display: 'block', marginBottom: '4px' }}>
               Zone Type
             </label>
             <select
@@ -413,10 +455,10 @@ export default function LeftPanel({
               onChange={(e) => onFilterTypeChange(e.target.value)}
               style={{
                 width: '100%',
-                background: '#0f1117',
-                border: '1px solid #1e293b',
+                background: '#faf8f4',
+                border: '1px solid #e8e0d5',
                 borderRadius: '4px',
-                color: '#94a3b8',
+                color: '#1a1410',
                 padding: '5px 6px',
                 fontSize: '12px',
                 cursor: 'pointer',
@@ -431,7 +473,7 @@ export default function LeftPanel({
           </div>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-              <label style={{ fontSize: '11px', color: '#64748b' }}>Min Score</label>
+              <label style={{ fontSize: '11px', color: '#6b5c4e' }}>Min Score</label>
               <span style={{ fontSize: '11px', fontWeight: 700, color: getScoreColor(minScore), fontFamily: 'monospace' }}>{minScore}</span>
             </div>
             <input
@@ -440,20 +482,20 @@ export default function LeftPanel({
               max={90}
               value={minScore}
               onChange={(e) => onMinScoreChange(parseInt(e.target.value))}
-              style={{ width: '100%', accentColor: '#d97706', cursor: 'pointer' }}
+              style={{ width: '100%', accentColor: '#c0392b', cursor: 'pointer' }}
             />
           </div>
         </div>
 
         {/* Top zones ranking */}
         <div style={{
-          background: '#0d1219',
-          border: '1px solid #1e293b',
+          background: '#ffffff',
+          border: '1px solid #e8e0d5',
           borderRadius: '8px',
           padding: '12px',
           marginBottom: '10px',
         }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '10px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '10px', fontWeight: 600 }}>
             Top Zones
           </div>
           {top5.map((zone, idx) => (
@@ -466,15 +508,15 @@ export default function LeftPanel({
                 gap: '8px',
                 padding: '6px 8px',
                 marginBottom: '3px',
-                background: selectedZones.includes(zone.id) ? '#d9770611' : '#0f1117',
-                border: `1px solid ${selectedZones.includes(zone.id) ? '#d9770633' : '#1e293b'}`,
+                background: selectedZones.includes(zone.id) ? '#c0392b11' : '#faf8f4',
+                border: `1px solid ${selectedZones.includes(zone.id) ? '#c0392b33' : '#e8e0d5'}`,
                 borderRadius: '5px',
                 cursor: 'pointer',
               }}
             >
-              <span style={{ fontSize: '10px', color: '#334155', width: '14px', flexShrink: 0, fontFamily: 'monospace' }}>0{idx + 1}</span>
+              <span style={{ fontSize: '10px', color: '#9c8877', width: '14px', flexShrink: 0, fontFamily: 'monospace' }}>0{idx + 1}</span>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: '12px', color: '#cbd5e1', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontSize: '12px', color: '#1a1410', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {zone.name}
                   {zone.trendBonus > 8 && (
                     <span style={{
@@ -488,7 +530,7 @@ export default function LeftPanel({
                     }}>▲</span>
                   )}
                 </div>
-                <div style={{ fontSize: '9px', color: '#334155', marginTop: '1px' }}>{zone.raw.zoneType}</div>
+                <div style={{ fontSize: '9px', color: '#9c8877', marginTop: '1px' }}>{zone.raw.zoneType}</div>
               </div>
               <ScoreBadge score={zone.globalScore} />
             </div>
@@ -509,13 +551,13 @@ export default function LeftPanel({
 
         {selectedZones.length === 1 && (
           <div style={{
-            background: '#0d1219',
-            border: '1px dashed #1e293b',
+            background: '#ffffff',
+            border: '1px dashed #e8e0d5',
             borderRadius: '8px',
             padding: '10px',
             textAlign: 'center',
             fontSize: '11px',
-            color: '#334155',
+            color: '#9c8877',
           }}>
             Select a 2nd zone on the map to compare
           </div>

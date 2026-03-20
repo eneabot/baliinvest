@@ -14,10 +14,10 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
   return (
     <div style={{ marginBottom: '8px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-        <span style={{ fontSize: '13px', color: '#94a3b8' }}>{label}</span>
+        <span style={{ fontSize: '13px', color: '#6b5c4e' }}>{label}</span>
         <span style={{ fontSize: '13px', fontWeight: 700, color }}>{value}/100</span>
       </div>
-      <div style={{ height: '8px', background: '#1e293b', borderRadius: '4px', overflow: 'hidden' }}>
+      <div style={{ height: '8px', background: '#e8e0d5', borderRadius: '4px', overflow: 'hidden' }}>
         <div
           style={{
             width: `${value}%`,
@@ -34,24 +34,24 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
 
 // Gradient palette for photo placeholders
 const ZONE_GRADIENTS: Record<string, string> = {
-  canggu: 'linear-gradient(135deg, #1a3a2a, #2d6a4f)',
-  seminyak: 'linear-gradient(135deg, #2a1a3a, #6a2d6a)',
-  uluwatu: 'linear-gradient(135deg, #1a2a3a, #2d4a6a)',
-  ubud: 'linear-gradient(135deg, #1a3a1a, #4a7a2e)',
-  pererenan: 'linear-gradient(135deg, #1e3a2a, #3d7a3a)',
-  nusadua: 'linear-gradient(135deg, #1a2e3a, #1e5f7a)',
-  sanur: 'linear-gradient(135deg, #1a3a3a, #2e7a6a)',
-  tabanan: 'linear-gradient(135deg, #2a3a1a, #5a7a2a)',
-  amed: 'linear-gradient(135deg, #1a2a3a, #3a5a7a)',
-  buleleng: 'linear-gradient(135deg, #2a2a3a, #4a4a7a)',
-  jimbaran: 'linear-gradient(135deg, #3a2a1a, #7a5a2e)',
-  keramas: 'linear-gradient(135deg, #1a3a2e, #2e7a5a)',
-  lombok: 'linear-gradient(135deg, #3a1a1a, #7a2e2e)',
-  'lombok-kuta': 'linear-gradient(135deg, #3a1a2a, #7a2e5a)',
-  'lombok-gili': 'linear-gradient(135deg, #1a2e3a, #2e5f7a)',
-  'lombok-north': 'linear-gradient(135deg, #1a3a2e, #3a7a5a)',
-  'nusa-lembongan': 'linear-gradient(135deg, #1a2a3a, #2a4a7a)',
-  'nusa-penida': 'linear-gradient(135deg, #2a1a3a, #5a3a7a)',
+  canggu: 'linear-gradient(135deg, #c8e6c9, #a5d6a7)',
+  seminyak: 'linear-gradient(135deg, #f8bbd9, #f48fb1)',
+  uluwatu: 'linear-gradient(135deg, #bbdefb, #90caf9)',
+  ubud: 'linear-gradient(135deg, #dcedc8, #aed581)',
+  pererenan: 'linear-gradient(135deg, #c8e6c9, #80cbc4)',
+  nusadua: 'linear-gradient(135deg, #b3e5fc, #4fc3f7)',
+  sanur: 'linear-gradient(135deg, #b2ebf2, #80deea)',
+  tabanan: 'linear-gradient(135deg, #dcedc8, #c5e1a5)',
+  amed: 'linear-gradient(135deg, #bbdefb, #90caf9)',
+  buleleng: 'linear-gradient(135deg, #ede7f6, #ce93d8)',
+  jimbaran: 'linear-gradient(135deg, #ffe0b2, #ffcc80)',
+  keramas: 'linear-gradient(135deg, #c8e6c9, #a5d6a7)',
+  lombok: 'linear-gradient(135deg, #ffcdd2, #ef9a9a)',
+  'lombok-kuta': 'linear-gradient(135deg, #fce4ec, #f48fb1)',
+  'lombok-gili': 'linear-gradient(135deg, #e0f7fa, #80deea)',
+  'lombok-north': 'linear-gradient(135deg, #e8f5e9, #a5d6a7)',
+  'nusa-lembongan': 'linear-gradient(135deg, #e3f2fd, #90caf9)',
+  'nusa-penida': 'linear-gradient(135deg, #ede7f6, #b39ddb)',
 };
 
 export default function RegionPage({ zone, onBack }: Props) {
@@ -64,23 +64,24 @@ export default function RegionPage({ zone, onBack }: Props) {
   const payback = totalInvest > 0 ? Math.round(totalInvest / revpar) : 0;
   const scoreColor = getScoreColor(zone.globalScore);
   const isTrending = zone.trendBonus > 8;
-  const gradient = ZONE_GRADIENTS[zone.id] || 'linear-gradient(135deg, #1a2a3a, #2d4a6a)';
+  const gradient = ZONE_GRADIENTS[zone.id] || 'linear-gradient(135deg, #e8f5e9, #b2dfdb)';
   const specificLinks = LISTINGS_LINKS[zone.id] || [];
 
   return (
     <div
       style={{
         minHeight: '100vh',
-        background: '#0f1117',
-        color: '#e2e8f0',
+        background: '#faf8f4',
+        color: '#1a1410',
         fontFamily: 'system-ui, -apple-system, sans-serif',
+        overflowY: 'auto',
       }}
     >
       {/* Header bar */}
       <div
         style={{
-          background: '#0d1219',
-          borderBottom: '1px solid #1e293b',
+          background: '#f0ebe3',
+          borderBottom: '1px solid #e8e0d5',
           padding: '14px 20px',
           display: 'flex',
           alignItems: 'center',
@@ -94,9 +95,9 @@ export default function RegionPage({ zone, onBack }: Props) {
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid #2d3748',
+            border: '1px solid #e8e0d5',
             borderRadius: '6px',
-            color: '#94a3b8',
+            color: '#6b5c4e',
             fontSize: '13px',
             padding: '6px 12px',
             cursor: 'pointer',
@@ -110,14 +111,15 @@ export default function RegionPage({ zone, onBack }: Props) {
         </button>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-            <h1 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: '#e2e8f0' }}>
+            <h1 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: '#1a1410' }}>
               {zone.name}
             </h1>
             <span
               style={{
-                background: '#1e293b',
+                background: '#f0ebe3',
+                border: '1px solid #e8e0d5',
                 borderRadius: '5px',
-                color: '#94a3b8',
+                color: '#6b5c4e',
                 fontSize: '11px',
                 padding: '2px 8px',
                 fontWeight: 600,
@@ -145,7 +147,7 @@ export default function RegionPage({ zone, onBack }: Props) {
         <div style={{ textAlign: 'right', flexShrink: 0 }}>
           <div style={{ fontSize: '28px', fontWeight: 900, color: scoreColor, lineHeight: 1 }}>
             {zone.globalScore}
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 400 }}>/100</span>
+            <span style={{ fontSize: '13px', color: '#9c8877', fontWeight: 400 }}>/100</span>
           </div>
         </div>
       </div>
@@ -163,26 +165,25 @@ export default function RegionPage({ zone, onBack }: Props) {
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '24px',
-            border: '1px solid #1e293b',
+            border: '1px solid #e8e0d5',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
           <div style={{ textAlign: 'center', zIndex: 1 }}>
             <div style={{ fontSize: '40px', marginBottom: '8px' }}>🏝️</div>
-            <div style={{ fontSize: '22px', fontWeight: 800, color: '#e2e8f0', letterSpacing: '1px' }}>
+            <div style={{ fontSize: '22px', fontWeight: 800, color: '#1a1410', letterSpacing: '1px' }}>
               {zone.name}
             </div>
-            <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>
+            <div style={{ fontSize: '12px', color: '#6b5c4e', marginTop: '4px' }}>
               {zone.raw.zoneType} · {zone.raw.distanceAirport} min to airport
             </div>
           </div>
-          {/* Decorative overlay */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse at 50% 0%, rgba(192,57,43,0.06) 0%, transparent 70%)',
             }}
           />
         </div>
@@ -190,13 +191,16 @@ export default function RegionPage({ zone, onBack }: Props) {
         {/* Trend signal */}
         <div
           style={{
-            background: '#131822',
+            background: '#ffffff',
+            borderTop: '1px solid #e8e0d5',
+            borderRight: '1px solid #e8e0d5',
+            borderBottom: '1px solid #e8e0d5',
             borderLeft: `3px solid ${scoreColor}`,
             padding: '10px 14px',
             borderRadius: '0 6px 6px 0',
             marginBottom: '20px',
             fontSize: '13px',
-            color: '#cbd5e1',
+            color: '#6b5c4e',
             lineHeight: 1.5,
           }}
         >
@@ -215,13 +219,13 @@ export default function RegionPage({ zone, onBack }: Props) {
           {/* Score breakdown */}
           <div
             style={{
-              background: '#131822',
-              border: '1px solid #1e293b',
+              background: '#ffffff',
+              border: '1px solid #e8e0d5',
               borderRadius: '10px',
               padding: '16px',
             }}
           >
-            <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '14px', fontWeight: 600 }}>
+            <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '14px', fontWeight: 600 }}>
               Score Breakdown
             </div>
             <ScoreBar label="Zoning" value={zone.scores.zonage} />
@@ -241,7 +245,7 @@ export default function RegionPage({ zone, onBack }: Props) {
                 alignItems: 'center',
               }}
             >
-              <span style={{ fontSize: '13px', color: '#94a3b8' }}>Global Score</span>
+              <span style={{ fontSize: '13px', color: '#6b5c4e' }}>Global Score</span>
               <span style={{ fontSize: '18px', fontWeight: 900, color: scoreColor }}>
                 {zone.globalScore}/100
               </span>
@@ -251,42 +255,42 @@ export default function RegionPage({ zone, onBack }: Props) {
           {/* Market data */}
           <div
             style={{
-              background: '#131822',
-              border: '1px solid #1e293b',
+              background: '#ffffff',
+              border: '1px solid #e8e0d5',
               borderRadius: '10px',
               padding: '16px',
             }}
           >
-            <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '14px', fontWeight: 600 }}>
+            <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '14px', fontWeight: 600 }}>
               Market Data
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 12px', fontSize: '13px' }}>
-              <span style={{ color: '#64748b' }}>Avg nightly rate</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>${zone.raw.avgNightlyRate}</span>
+              <span style={{ color: '#9c8877' }}>Avg nightly rate</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>${zone.raw.avgNightlyRate}</span>
 
-              <span style={{ color: '#64748b' }}>Occupancy rate</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{Math.round(zone.raw.occupancyRate * 100)}%</span>
+              <span style={{ color: '#9c8877' }}>Occupancy rate</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>{Math.round(zone.raw.occupancyRate * 100)}%</span>
 
-              <span style={{ color: '#64748b' }}>Annual RevPAR</span>
+              <span style={{ color: '#9c8877' }}>Annual RevPAR</span>
               <span style={{ color: scoreColor, fontWeight: 700 }}>~${revpar.toLocaleString()}</span>
 
-              <span style={{ color: '#64748b' }}>Land price</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>${zone.raw.landPricePerAre.toLocaleString()}/are</span>
+              <span style={{ color: '#9c8877' }}>Land price</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>${zone.raw.landPricePerAre.toLocaleString()}/are</span>
 
-              <span style={{ color: '#64748b' }}>Land appreciation</span>
+              <span style={{ color: '#9c8877' }}>Land appreciation</span>
               <span style={{ color: '#22c55e', fontWeight: 600 }}>+{zone.raw.landPriceTrend}%/yr</span>
 
-              <span style={{ color: '#64748b' }}>Airport access</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{zone.raw.distanceAirport} min</span>
+              <span style={{ color: '#9c8877' }}>Airport access</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>{zone.raw.distanceAirport} min</span>
 
-              <span style={{ color: '#64748b' }}>Zone type</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{zone.raw.zoneType}</span>
+              <span style={{ color: '#9c8877' }}>Zone type</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>{zone.raw.zoneType}</span>
 
-              <span style={{ color: '#64748b' }}>Active listings</span>
-              <span style={{ color: '#e2e8f0', fontWeight: 600 }}>{zone.listingsCount}</span>
+              <span style={{ color: '#9c8877' }}>Active listings</span>
+              <span style={{ color: '#1a1410', fontWeight: 600 }}>{zone.listingsCount}</span>
 
-              <span style={{ color: '#64748b' }}>Trend bonus</span>
-              <span style={{ color: '#f59e0b', fontWeight: 600 }}>+{zone.trendBonus} pts</span>
+              <span style={{ color: '#9c8877' }}>Trend bonus</span>
+              <span style={{ color: '#c0392b', fontWeight: 600 }}>+{zone.trendBonus} pts</span>
             </div>
           </div>
         </div>
@@ -294,18 +298,18 @@ export default function RegionPage({ zone, onBack }: Props) {
         {/* ROI Estimator */}
         <div
           style={{
-            background: '#131822',
-            border: '1px solid #1e293b',
+            background: '#ffffff',
+            border: '1px solid #e8e0d5',
             borderRadius: '10px',
             padding: '16px',
             marginBottom: '20px',
           }}
         >
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '14px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '14px', fontWeight: 600 }}>
             ROI Estimator
           </div>
           <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <label style={{ fontSize: '13px', color: '#94a3b8' }}>Land (ares):</label>
+            <label style={{ fontSize: '13px', color: '#6b5c4e' }}>Land (ares):</label>
             <input
               type="number"
               value={ares}
@@ -313,15 +317,15 @@ export default function RegionPage({ zone, onBack }: Props) {
               onChange={(e) => setAres(Math.max(1, parseInt(e.target.value) || 1))}
               style={{
                 width: '60px',
-                background: '#0f1117',
-                border: '1px solid #2d3748',
+                background: '#faf8f4',
+                border: '1px solid #e8e0d5',
                 borderRadius: '4px',
-                color: '#e2e8f0',
+                color: '#1a1410',
                 padding: '5px 8px',
                 fontSize: '13px',
               }}
             />
-            <label style={{ fontSize: '13px', color: '#94a3b8' }}>Build cost ($):</label>
+            <label style={{ fontSize: '13px', color: '#6b5c4e' }}>Build cost ($):</label>
             <input
               type="number"
               value={construction}
@@ -330,10 +334,10 @@ export default function RegionPage({ zone, onBack }: Props) {
               onChange={(e) => setConstruction(Math.max(0, parseInt(e.target.value) || 0))}
               style={{
                 width: '110px',
-                background: '#0f1117',
-                border: '1px solid #2d3748',
+                background: '#faf8f4',
+                border: '1px solid #e8e0d5',
                 borderRadius: '4px',
-                color: '#e2e8f0',
+                color: '#1a1410',
                 padding: '5px 8px',
                 fontSize: '13px',
               }}
@@ -341,41 +345,41 @@ export default function RegionPage({ zone, onBack }: Props) {
           </div>
           <div
             style={{
-              background: '#0f1117',
+              background: '#faf8f4',
               borderRadius: '8px',
               padding: '14px',
               fontSize: '13px',
-              border: '1px solid #1e293b',
+              border: '1px solid #e8e0d5',
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '8px',
             }}
           >
-            <span style={{ color: '#64748b' }}>Total investment</span>
-            <span style={{ color: '#e2e8f0', fontWeight: 700 }}>${totalInvest.toLocaleString()}</span>
+            <span style={{ color: '#9c8877' }}>Total investment</span>
+            <span style={{ color: '#1a1410', fontWeight: 700 }}>${totalInvest.toLocaleString()}</span>
 
-            <span style={{ color: '#64748b' }}>Gross revenue/yr</span>
+            <span style={{ color: '#9c8877' }}>Gross revenue/yr</span>
             <span style={{ color: scoreColor, fontWeight: 700 }}>~${revpar.toLocaleString()}</span>
 
-            <span style={{ color: '#f59e0b', fontWeight: 700, fontSize: '15px' }}>Gross ROI</span>
-            <span style={{ color: '#f59e0b', fontWeight: 900, fontSize: '15px' }}>~{roi}%</span>
+            <span style={{ color: '#c0392b', fontWeight: 700, fontSize: '15px' }}>Gross ROI</span>
+            <span style={{ color: '#c0392b', fontWeight: 900, fontSize: '15px' }}>~{roi}%</span>
 
-            <span style={{ color: '#64748b' }}>Payback period</span>
-            <span style={{ color: '#94a3b8', fontWeight: 600 }}>~{payback} years</span>
+            <span style={{ color: '#9c8877' }}>Payback period</span>
+            <span style={{ color: '#6b5c4e', fontWeight: 600 }}>~{payback} years</span>
           </div>
         </div>
 
         {/* Land Market Panel */}
         <div
           style={{
-            background: '#131822',
-            border: '1px solid #1e293b',
+            background: '#ffffff',
+            border: '1px solid #e8e0d5',
             borderRadius: '10px',
             padding: '16px',
             marginBottom: '20px',
           }}
         >
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '14px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '14px', fontWeight: 600 }}>
             Land Market (Historical Transactions)
           </div>
           <LandMarketPanel zoneId={zone.id} />
@@ -384,13 +388,13 @@ export default function RegionPage({ zone, onBack }: Props) {
         {/* Land Listings */}
         <div
           style={{
-            background: '#131822',
-            border: '1px solid #1e293b',
+            background: '#ffffff',
+            border: '1px solid #e8e0d5',
             borderRadius: '10px',
             padding: '16px',
           }}
         >
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '14px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '14px', fontWeight: 600 }}>
             Land Listings{zone.listingsCount > 0 ? ` (${zone.listingsCount} active)` : ''}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -404,17 +408,17 @@ export default function RegionPage({ zone, onBack }: Props) {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  color: '#60a5fa',
+                  color: '#c0392b',
                   fontSize: '13px',
                   textDecoration: 'none',
                   padding: '8px 12px',
-                  background: '#0f1117',
+                  background: '#faf8f4',
                   borderRadius: '6px',
-                  border: '1px solid #1e293b',
+                  border: '1px solid #e8e0d5',
                 }}
               >
                 <span>{link.label}</span>
-                <span style={{ color: '#475569' }}>↗</span>
+                <span style={{ color: '#9c8877' }}>↗</span>
               </a>
             ))}
             <a
@@ -425,17 +429,17 @@ export default function RegionPage({ zone, onBack }: Props) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                color: '#94a3b8',
+                color: '#6b5c4e',
                 fontSize: '13px',
                 textDecoration: 'none',
                 padding: '8px 12px',
-                background: '#0f1117',
+                background: '#faf8f4',
                 borderRadius: '6px',
-                border: '1px solid #1e293b',
+                border: '1px solid #e8e0d5',
               }}
             >
               <span>Search on Rumah123</span>
-              <span style={{ color: '#475569' }}>↗</span>
+              <span style={{ color: '#9c8877' }}>↗</span>
             </a>
           </div>
         </div>

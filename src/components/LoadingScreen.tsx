@@ -4,29 +4,31 @@ interface Props {
   onDone: () => void;
 }
 
+const LOADING_STEPS = [
+  'Updating real estate data…',
+  'Computing zone scores…',
+  'Building the map…',
+  'Calculating projections…',
+];
+
 export default function LoadingScreen({ onDone }: Props) {
   const [fading, setFading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
 
   useEffect(() => {
-    // Animate progress bar from 0 to 100 over 2 seconds
-    const start = performance.now();
-    const duration = 2000;
-    let raf: number;
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const pct = Math.min(100, (elapsed / duration) * 100);
-      setProgress(pct);
-      if (pct < 100) {
-        raf = requestAnimationFrame(tick);
-      }
-    };
-    raf = requestAnimationFrame(tick);
+    // Show loading steps one by one every 1.25s
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    LOADING_STEPS.forEach((_, i) => {
+      timers.push(setTimeout(() => {
+        setVisibleSteps((prev) => [...prev, i]);
+      }, i * 1250 + 300));
+    });
 
-    const fadeTimer = setTimeout(() => setFading(true), 2000);
-    const doneTimer = setTimeout(() => onDone(), 2600);
+    const fadeTimer = setTimeout(() => setFading(true), 4500);
+    const doneTimer = setTimeout(() => onDone(), 5200);
+
     return () => {
-      cancelAnimationFrame(raf);
+      timers.forEach(clearTimeout);
       clearTimeout(fadeTimer);
       clearTimeout(doneTimer);
     };
@@ -35,27 +37,59 @@ export default function LoadingScreen({ onDone }: Props) {
   return (
     <>
       <style>{`
-        @keyframes drawBuilding {
-          from { stroke-dashoffset: 600; }
-          to   { stroke-dashoffset: 0; }
-        }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(12px); }
+        @keyframes ls-fade-in-up {
+          from { opacity: 0; transform: translateY(10px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .loading-fade-out {
-          transition: opacity 0.6s ease;
+        @keyframes ls-title-in {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Platform base: draws 0s → 1s */
+        @keyframes draw-base {
+          from { stroke-dashoffset: 400; }
+          to   { stroke-dashoffset: 0; }
+        }
+        /* Columns: draws 1s → 2s */
+        @keyframes draw-columns {
+          from { stroke-dashoffset: 300; }
+          to   { stroke-dashoffset: 0; }
+        }
+        /* Roof tiers: draws 2s → 4s */
+        @keyframes draw-roof {
+          from { stroke-dashoffset: 700; }
+          to   { stroke-dashoffset: 0; }
+        }
+        /* Decorative details: draws 4s → 5s */
+        @keyframes draw-details {
+          from { stroke-dashoffset: 400; }
+          to   { stroke-dashoffset: 0; }
+        }
+
+        .ls-base    { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw-base    1s ease-out 0s    forwards; }
+        .ls-columns { stroke-dasharray: 300; stroke-dashoffset: 300; animation: draw-columns 1s ease-out 1s    forwards; }
+        .ls-roof    { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw-roof    2s ease-out 2s    forwards; }
+        .ls-details { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw-details 1s ease-out 4s    forwards; }
+
+        .ls-title   { opacity: 0; animation: ls-title-in 0.8s ease 2s forwards; }
+        .ls-step    { opacity: 0; animation: ls-fade-in-up 0.5s ease forwards; }
+
+        .ls-overlay {
+          transition: opacity 0.7s ease;
+        }
+        .ls-overlay.fading {
           opacity: 0 !important;
           pointer-events: none;
         }
       `}</style>
 
       <div
-        className={fading ? 'loading-fade-out' : ''}
+        className={`ls-overlay${fading ? ' fading' : ''}`}
         style={{
           position: 'fixed',
           inset: 0,
-          background: '#0f1117',
+          background: '#faf8f4',
           zIndex: 9999,
           display: 'flex',
           flexDirection: 'column',
@@ -65,104 +99,130 @@ export default function LoadingScreen({ onDone }: Props) {
           fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
-        {/* Animated building SVG */}
+        {/* Joglo SVG — draws itself progressively */}
         <svg
-          viewBox="0 0 120 130"
-          width="120"
-          height="130"
-          style={{ marginBottom: '28px', filter: 'drop-shadow(0 0 18px #f59e0b55)' }}
+          viewBox="0 0 200 180"
+          width="200"
+          height="180"
+          style={{ marginBottom: '20px' }}
+          fill="none"
+          stroke="#c0392b"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          {/* Building outline — stroke-dashoffset animation draws it progressively */}
-          <g
-            fill="none"
-            stroke="#f59e0b"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="600"
-            style={{
-              animation: 'drawBuilding 1.8s ease-out forwards',
-            }}
-          >
-            {/* Main building body */}
-            <rect x="20" y="45" width="80" height="75" />
-            {/* Roof / gable */}
-            <polyline points="12,45 60,10 108,45" />
-            {/* Door */}
-            <rect x="48" y="90" width="24" height="30" rx="2" />
-            {/* Windows row 1 */}
-            <rect x="28" y="56" width="18" height="16" rx="2" />
-            <rect x="74" y="56" width="18" height="16" rx="2" />
-            {/* Windows row 2 */}
-            <rect x="28" y="78" width="18" height="14" rx="2" />
-            <rect x="74" y="78" width="18" height="14" rx="2" />
-            {/* Chimney */}
-            <rect x="78" y="18" width="10" height="18" />
+          {/* ── Platform / Base (0–1s) ── */}
+          <g className="ls-base" strokeWidth="2.5">
+            {/* Base platform rectangle */}
+            <rect x="30" y="148" width="140" height="14" rx="2" />
+            {/* Ground line */}
+            <line x1="20" y1="162" x2="180" y2="162" />
           </g>
-          {/* Subtle amber fill on body (no animation, just static) */}
-          <rect x="20" y="45" width="80" height="75" fill="#f59e0b08" />
+
+          {/* ── Columns & Walls (1–2s) ── */}
+          <g className="ls-columns" strokeWidth="2">
+            {/* Left column */}
+            <line x1="52" y1="148" x2="52" y2="120" />
+            {/* Center-left column */}
+            <line x1="82" y1="148" x2="82" y2="120" />
+            {/* Center-right column */}
+            <line x1="118" y1="148" x2="118" y2="120" />
+            {/* Right column */}
+            <line x1="148" y1="148" x2="148" y2="120" />
+            {/* Wall panels between columns */}
+            <line x1="30" y1="120" x2="170" y2="120" />
+            {/* Side walls */}
+            <line x1="30" y1="120" x2="30" y2="148" />
+            <line x1="170" y1="120" x2="170" y2="148" />
+            {/* Central door arch */}
+            <path d="M92,148 L92,132 Q100,126 108,132 L108,148" />
+          </g>
+
+          {/* ── Tiered Roof (2–4s) ── */}
+          <g className="ls-roof" strokeWidth="2.5">
+            {/* Base (widest) roof tier — with upturned corners */}
+            <path d="M18,120 Q100,108 182,120" />
+            <path d="M18,120 Q14,122 10,118" />
+            <path d="M182,120 Q186,122 190,118" />
+
+            {/* Second roof tier */}
+            <path d="M36,108 Q100,96 164,108" />
+            <path d="M36,108 Q33,110 30,107" />
+            <path d="M164,108 Q167,110 170,107" />
+
+            {/* Top roof tier (narrowest) */}
+            <path d="M58,96 Q100,84 142,96" />
+            <path d="M58,96 Q55,98 52,95" />
+            <path d="M142,96 Q145,98 148,95" />
+
+            {/* Peak / finial */}
+            <path d="M82,84 Q100,72 118,84" />
+            <path d="M100,72 L100,64" />
+            {/* Roof ridge line */}
+            <line x1="60" y1="95" x2="140" y2="95" />
+          </g>
+
+          {/* ── Decorative Details (4–5s) ── */}
+          <g className="ls-details" strokeWidth="1.5" stroke="#8B2500">
+            {/* Ornamental peak finial */}
+            <path d="M96,64 L100,56 L104,64" />
+            <line x1="100" y1="56" x2="100" y2="52" />
+            {/* Decorative carved panels on walls */}
+            <rect x="38" y="124" width="12" height="18" rx="1" />
+            <rect x="57" y="124" width="12" height="18" rx="1" />
+            <rect x="131" y="124" width="12" height="18" rx="1" />
+            <rect x="150" y="124" width="12" height="18" rx="1" />
+            {/* Roof overhang details */}
+            <line x1="20" y1="118" x2="180" y2="118" />
+            <line x1="38" y1="106" x2="162" y2="106" />
+          </g>
         </svg>
 
         {/* Title */}
         <h1
+          className="ls-title"
           style={{
             margin: 0,
-            fontSize: '42px',
+            fontSize: '36px',
             fontWeight: 900,
-            color: '#f59e0b',
-            letterSpacing: '2px',
-            textShadow: '0 0 30px #f59e0b66',
-            animation: 'fadeInUp 0.7s ease 0.3s both',
+            color: '#c0392b',
+            letterSpacing: '1px',
           }}
         >
-          Balibagus
+          Bali Bagus
         </h1>
 
         {/* Subtitle */}
         <p
           style={{
-            margin: '8px 0 0',
-            fontSize: '13px',
-            color: '#64748b',
-            letterSpacing: '2.5px',
+            margin: '6px 0 0',
+            fontSize: '11px',
+            color: '#9c8877',
+            letterSpacing: '2px',
             textTransform: 'uppercase',
-            animation: 'fadeInUp 0.7s ease 0.55s both',
+            opacity: 0,
+            animation: 'ls-title-in 0.8s ease 2.3s forwards',
           }}
         >
           Bali Investment Intelligence
         </p>
 
-        {/* Progress bar */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '40px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '220px',
-            animation: 'fadeInUp 0.5s ease 0.2s both',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              height: '3px',
-              background: '#1e293b',
-              borderRadius: '2px',
-              overflow: 'hidden',
-            }}
-          >
-            <div
+        {/* Loading steps */}
+        <div style={{ marginTop: '32px', minHeight: '80px', textAlign: 'center' }}>
+          {LOADING_STEPS.map((step, i) => (
+            <p
+              key={step}
+              className="ls-step"
               style={{
-                height: '100%',
-                width: `${progress}%`,
-                background: 'linear-gradient(90deg, #d97706, #f59e0b)',
-                borderRadius: '2px',
-                transition: 'width 0.05s linear',
-                boxShadow: '0 0 8px #f59e0b88',
+                margin: '4px 0',
+                fontSize: '13px',
+                color: '#6b5c4e',
+                animationDelay: `${i * 1.25 + 0.3}s`,
+                display: visibleSteps.includes(i) ? 'block' : 'none',
               }}
-            />
-          </div>
+            >
+              {step}
+            </p>
+          ))}
         </div>
       </div>
     </>

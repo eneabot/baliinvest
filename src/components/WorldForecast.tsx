@@ -33,8 +33,8 @@ const SIGNAL_ORDER = { emerging: 0, rising: 1, stable: 2, peak: 3 };
 const SIGNAL_STYLES: Record<string, { color: string; bg: string; label: string }> = {
   emerging: { color: '#a855f7', bg: '#a855f71a', label: 'Emerging' },
   rising: { color: '#22c55e', bg: '#22c55e1a', label: 'Rising' },
-  stable: { color: '#94a3b8', bg: '#94a3b81a', label: 'Stable' },
-  peak: { color: '#eab308', bg: '#eab3081a', label: 'Peak' },
+  stable: { color: '#6b5c4e', bg: '#f0ebe3', label: 'Stable' },
+  peak: { color: '#d97706', bg: '#fef3c71a', label: 'Peak' },
 };
 
 interface Props {
@@ -56,19 +56,19 @@ export default function WorldForecast({ onBack }: Props) {
 
   return (
     <div style={{
-      minHeight: '100vh',
-      background: '#0f1117',
-      color: '#e2e8f0',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
+      height: '100vh',
       overflowY: 'auto',
+      background: '#faf8f4',
+      color: '#1a1410',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
     }}>
       {/* Top nav bar */}
       <div style={{
         position: 'sticky',
         top: 0,
         zIndex: 10,
-        background: '#0d1219',
-        borderBottom: '1px solid #1e293b',
+        background: '#f0ebe3',
+        borderBottom: '1px solid #e8e0d5',
         padding: '10px 20px',
         display: 'flex',
         alignItems: 'center',
@@ -78,9 +78,9 @@ export default function WorldForecast({ onBack }: Props) {
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid #1e293b',
+            border: '1px solid #e8e0d5',
             borderRadius: '5px',
-            color: '#64748b',
+            color: '#6b5c4e',
             fontSize: '12px',
             padding: '5px 10px',
             cursor: 'pointer',
@@ -89,10 +89,10 @@ export default function WorldForecast({ onBack }: Props) {
           ← Back to Map
         </button>
         <div>
-          <div style={{ fontSize: '15px', fontWeight: 800, color: '#d97706' }}>
+          <div style={{ fontSize: '15px', fontWeight: 800, color: '#c0392b' }}>
             🌍 World Forecast
           </div>
-          <div style={{ fontSize: '10px', color: '#475569', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
+          <div style={{ fontSize: '10px', color: '#9c8877', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
             Real estate buzz analysis · Social signal index
           </div>
         </div>
@@ -102,13 +102,13 @@ export default function WorldForecast({ onBack }: Props) {
 
         {/* Disclaimer */}
         <div style={{
-          background: '#1a1a0d',
-          border: '1px solid #44440022',
-          borderLeft: '3px solid #eab308',
+          background: '#fff9ed',
+          border: '1px solid #e8e0d5',
+          borderLeft: '3px solid #d97706',
           borderRadius: '0 6px 6px 0',
           padding: '8px 14px',
           fontSize: '11px',
-          color: '#94844b',
+          color: '#9c8877',
           marginBottom: '24px',
           lineHeight: 1.5,
         }}>
@@ -117,13 +117,13 @@ export default function WorldForecast({ onBack }: Props) {
 
         {/* Emerging Markets highlight */}
         <div style={{ marginBottom: '28px' }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', marginBottom: '12px', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', marginBottom: '12px', fontWeight: 600 }}>
             Top Emerging Markets
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
             {emerging.map((t) => (
               <div key={t.country} style={{
-                background: '#0d1219',
+                background: '#ffffff',
                 border: '1px solid #a855f733',
                 borderRadius: '10px',
                 padding: '16px',
@@ -144,19 +144,19 @@ export default function WorldForecast({ onBack }: Props) {
                   EMERGING
                 </div>
                 <div style={{ fontSize: '28px', marginBottom: '6px' }}>{t.flag}</div>
-                <div style={{ fontSize: '16px', fontWeight: 700, color: '#f1f5f9', marginBottom: '2px' }}>{t.country}</div>
-                <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '10px' }}>{t.region}</div>
+                <div style={{ fontSize: '16px', fontWeight: 700, color: '#1a1410', marginBottom: '2px' }}>{t.country}</div>
+                <div style={{ fontSize: '11px', color: '#9c8877', marginBottom: '10px' }}>{t.region}</div>
                 <div style={{ display: 'flex', gap: '12px', marginBottom: '10px' }}>
                   <div>
                     <div style={{ fontSize: '18px', fontWeight: 800, color: '#a855f7' }}>{t.growthRate}%</div>
-                    <div style={{ fontSize: '9px', color: '#64748b', textTransform: 'uppercase' }}>MoM Growth</div>
+                    <div style={{ fontSize: '9px', color: '#9c8877', textTransform: 'uppercase' }}>MoM Growth</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '18px', fontWeight: 800, color: '#e2e8f0' }}>{t.socialScore}</div>
-                    <div style={{ fontSize: '9px', color: '#64748b', textTransform: 'uppercase' }}>Buzz Score</div>
+                    <div style={{ fontSize: '18px', fontWeight: 800, color: '#1a1410' }}>{t.socialScore}</div>
+                    <div style={{ fontSize: '9px', color: '#9c8877', textTransform: 'uppercase' }}>Buzz Score</div>
                   </div>
                 </div>
-                <div style={{ fontSize: '11px', color: '#94a3b8', lineHeight: 1.5 }}>{t.insight}</div>
+                <div style={{ fontSize: '11px', color: '#6b5c4e', lineHeight: 1.5 }}>{t.insight}</div>
                 <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {t.investmentZones.map((z) => (
                     <span key={z} style={{
@@ -165,7 +165,7 @@ export default function WorldForecast({ onBack }: Props) {
                       border: '1px solid #a855f733',
                       borderRadius: '4px',
                       padding: '2px 6px',
-                      color: '#c084fc',
+                      color: '#a855f7',
                     }}>{z}</span>
                   ))}
                 </div>
@@ -176,19 +176,19 @@ export default function WorldForecast({ onBack }: Props) {
 
         {/* Sort controls */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#475569', fontWeight: 600 }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.2px', color: '#9c8877', fontWeight: 600 }}>
             All Markets — {WORLD_TRENDS.length} countries tracked
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '11px', color: '#475569' }}>Sort by</span>
+            <span style={{ fontSize: '11px', color: '#9c8877' }}>Sort by</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortKey)}
               style={{
-                background: '#0d1219',
-                border: '1px solid #1e293b',
+                background: '#ffffff',
+                border: '1px solid #e8e0d5',
                 borderRadius: '4px',
-                color: '#94a3b8',
+                color: '#1a1410',
                 padding: '4px 8px',
                 fontSize: '11px',
                 cursor: 'pointer',
@@ -207,8 +207,8 @@ export default function WorldForecast({ onBack }: Props) {
             const sig = SIGNAL_STYLES[t.signal];
             return (
               <div key={t.country} style={{
-                background: '#0d1219',
-                border: '1px solid #1e293b',
+                background: '#ffffff',
+                border: '1px solid #e8e0d5',
                 borderRadius: '8px',
                 padding: '14px 16px',
               }}>
@@ -216,17 +216,17 @@ export default function WorldForecast({ onBack }: Props) {
                   {/* Flag + name */}
                   <div style={{ minWidth: '140px', flexShrink: 0 }}>
                     <div style={{ fontSize: '20px', lineHeight: 1 }}>{t.flag}</div>
-                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#f1f5f9', marginTop: '3px' }}>{t.country}</div>
-                    <div style={{ fontSize: '10px', color: '#475569' }}>{t.region}</div>
+                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#1a1410', marginTop: '3px' }}>{t.country}</div>
+                    <div style={{ fontSize: '10px', color: '#9c8877' }}>{t.region}</div>
                   </div>
 
                   {/* Social score bar */}
                   <div style={{ flex: 1, minWidth: '120px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#475569', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#9c8877', marginBottom: '4px' }}>
                       <span>Social Score</span>
-                      <span style={{ color: '#94a3b8', fontWeight: 700 }}>{t.socialScore}</span>
+                      <span style={{ color: '#1a1410', fontWeight: 700 }}>{t.socialScore}</span>
                     </div>
-                    <div style={{ height: '5px', background: '#1e293b', borderRadius: '3px', overflow: 'hidden' }}>
+                    <div style={{ height: '5px', background: '#e8e0d5', borderRadius: '3px', overflow: 'hidden' }}>
                       <div style={{
                         width: `${t.socialScore}%`,
                         height: '100%',
@@ -234,17 +234,17 @@ export default function WorldForecast({ onBack }: Props) {
                         borderRadius: '3px',
                       }} />
                     </div>
-                    <div style={{ marginTop: '6px', fontSize: '10px', color: '#475569' }}>
+                    <div style={{ marginTop: '6px', fontSize: '10px', color: '#9c8877' }}>
                       {(t.hashtagVolume / 1000).toFixed(0)}k hashtags/mo
                     </div>
                   </div>
 
                   {/* Growth rate */}
                   <div style={{ flexShrink: 0, textAlign: 'center', minWidth: '60px' }}>
-                    <div style={{ fontSize: '18px', fontWeight: 800, color: t.growthRate > 40 ? '#a855f7' : t.growthRate > 25 ? '#22c55e' : '#94a3b8' }}>
+                    <div style={{ fontSize: '18px', fontWeight: 800, color: t.growthRate > 40 ? '#a855f7' : t.growthRate > 25 ? '#22c55e' : '#6b5c4e' }}>
                       +{t.growthRate}%
                     </div>
-                    <div style={{ fontSize: '9px', color: '#475569', textTransform: 'uppercase' }}>MoM</div>
+                    <div style={{ fontSize: '9px', color: '#9c8877', textTransform: 'uppercase' }}>MoM</div>
                   </div>
 
                   {/* Signal badge */}
@@ -264,20 +264,20 @@ export default function WorldForecast({ onBack }: Props) {
                 </div>
 
                 {/* Hashtags + insight */}
-                <div style={{ marginTop: '10px', borderTop: '1px solid #0f1117', paddingTop: '10px' }}>
+                <div style={{ marginTop: '10px', borderTop: '1px solid #f0ebe3', paddingTop: '10px' }}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '8px' }}>
                     {t.topHashtags.map((h) => (
                       <span key={h} style={{
                         fontSize: '10px',
-                        background: '#1e293b',
+                        background: '#f0ebe3',
                         borderRadius: '4px',
                         padding: '2px 6px',
-                        color: '#64748b',
+                        color: '#6b5c4e',
                         fontFamily: 'monospace',
                       }}>{h}</span>
                     ))}
                   </div>
-                  <div style={{ fontSize: '12px', color: '#94a3b8', lineHeight: 1.5, marginBottom: '8px' }}>
+                  <div style={{ fontSize: '12px', color: '#6b5c4e', lineHeight: 1.5, marginBottom: '8px' }}>
                     {t.insight}
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
@@ -302,14 +302,14 @@ export default function WorldForecast({ onBack }: Props) {
         <div style={{
           marginTop: '32px',
           paddingTop: '16px',
-          borderTop: '1px solid #1e293b',
+          borderTop: '1px solid #e8e0d5',
           fontSize: '10px',
-          color: '#334155',
+          color: '#9c8877',
           textAlign: 'center',
           lineHeight: 1.6,
         }}>
           Social signal scores simulated from public trend data.<br />
-          Not financial advice. Balibagus · {new Date().getFullYear()}
+          Not financial advice. Bali Bagus · {new Date().getFullYear()}
         </div>
       </div>
     </div>
